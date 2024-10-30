@@ -6,9 +6,9 @@ aside {
   background-color: darkturquoise;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
   min-height: 100vh;
+  padding-left: 20px;
 }
 p {
-  margin: 20px 0 20px 20px; /* Ajusta el margen izquierdo solo para el título */
   font-weight: 700;
   font-size: 20px;
 }
