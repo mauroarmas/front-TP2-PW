@@ -6,7 +6,7 @@ const StudentModule = () => {
     return (
         <div className='px-3'>
             <SearchBar></SearchBar>
-            <Table></Table>
+            {/* <Table></Table> */}
         </div>
     );
 };

@@ -1,31 +1,37 @@
+// StudentTable.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Table = () => {
+const Table = ({ search }) => {
   const [students, setStudents] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(5);
   const [totalStudents, setTotalStudents] = useState(0);
+
+  const borrado = (id) => {
+    console.log(id);
+  }
 
   useEffect(() => {
     const fetchStudents = async () => {
       try {
         const response = await axios.get("http://localhost:3000/api/students", {
           params: {
+            search,
             currentPage,
             pageSize,
           },
         });
 
-        setStudents(response.data.rows); // Asignamos los estudiantes obtenidos en `rows`
-        setTotalStudents(response.data.count); // Guardamos el total de estudiantes
+        setStudents(response.data.rows);
+        setTotalStudents(response.data.count);
       } catch (error) {
         console.error("Error al obtener estudiantes:", error);
       }
     };
 
     fetchStudents();
-  }, [currentPage, pageSize]);
+  }, [search, currentPage, pageSize]);
 
   const totalPages = Math.ceil(totalStudents / pageSize);
 
@@ -37,7 +43,7 @@ const Table = () => {
 
   const handlePageSizeChange = (e) => {
     setPageSize(Number(e.target.value));
-    setCurrentPage(1); // Reinicia la página actual al cambiar el tamaño de página
+    setCurrentPage(1);
   };
 
   return (
@@ -58,7 +64,7 @@ const Table = () => {
               <td>{student.firstname}</td>
               <td>{student.lastname}</td>
               <td>
-                <button type="button" className="div_btn back">
+                <button type="button" className="div_btn back" onClick={() => borrado(student.id)}>
                   Eliminar
                 </button>
               </td>
