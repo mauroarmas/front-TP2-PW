@@ -8,9 +8,13 @@ import StudentModule from "../pages/StudentModule";
 const AppRouter = () => {
   return (
     <Routes>
+
+      {/* Reutilización del NavBar para todas las páginas, con distinto título y botón enviado por props  */}
+
       <Route element={<NavBar title="Pagina Principal"/>}>
         <Route index exact path="/" element={<Index ></Index>}></Route>
       </Route>
+
       <Route element={<NavBar title="Alumnos" addStudentBtn={true}/> }>
         <Route
           exact
@@ -18,6 +22,7 @@ const AppRouter = () => {
           element={<StudentModule></StudentModule>}
         ></Route>
       </Route>
+
       <Route element={<NavBar title="Agregar Estudiante" backBtn={true}/>}>
         <Route
           exact
@@ -25,6 +30,7 @@ const AppRouter = () => {
           element={<NewStudent></NewStudent>}
         ></Route>
       </Route>
+
     </Routes>
   );
 };

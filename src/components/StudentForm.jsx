@@ -29,8 +29,12 @@ const StudentForm = ({ values = defaultValues }) => {
       alert("Estudiante agregado exitosamente");
       reset(); // Limpia el formulario después de agregar el estudiante
     } catch (error) {
-      console.error("Error al agregar estudiante:", error);
-      alert("Hubo un error al agregar el estudiante");
+      if (error.response) {
+        console.log("Error response data:", error.response.data); // Para depurar la respuesta
+        alert("Hubo un error al agregar el estudiante: " + (error.response.data.message || "Error desconocido"));
+      } else {
+        alert("Hubo un error al agregar el estudiante");
+      }
     }
   };
 

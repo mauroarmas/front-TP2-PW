@@ -1,4 +1,3 @@
-// StudentTable.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -8,27 +7,40 @@ const Table = ({ search }) => {
   const [pageSize, setPageSize] = useState(5);
   const [totalStudents, setTotalStudents] = useState(0);
 
-  const borrado = (id) => {
+  const fetchStudents = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/api/students", {
+        params: {
+          search,
+          currentPage,
+          pageSize,
+        },
+      });
+
+      setStudents(response.data.rows);
+      setTotalStudents(response.data.count);
+    } catch (error) {
+      console.error("Error al obtener estudiantes:", error);
+    }
+  };
+
+  const borrado = async (id) => {
     console.log(id);
+
+    try {
+      const response = await axios.put(`http://localhost:3000/api/students/${id}`
+      
+      );
+      fetchStudents();
+      console.log(response);
+    } catch (error) {
+      console.error("Error al borrar el estudiante", error);
+    }
+
   }
 
   useEffect(() => {
-    const fetchStudents = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/api/students", {
-          params: {
-            search,
-            currentPage,
-            pageSize,
-          },
-        });
 
-        setStudents(response.data.rows);
-        setTotalStudents(response.data.count);
-      } catch (error) {
-        console.error("Error al obtener estudiantes:", error);
-      }
-    };
 
     fetchStudents();
   }, [search, currentPage, pageSize]);
