@@ -27,10 +27,10 @@ const StudentForm = ({ values = defaultValues }) => {
         email: data.inputEmailValue,
       });
       alert("Estudiante agregado exitosamente");
-      reset(); // Limpia el formulario después de agregar el estudiante
+      reset(); 
     } catch (error) {
       if (error.response) {
-        console.log("Error response data:", error.response.data); // Para depurar la respuesta
+        console.log("Error response data:", error.response.data); 
         alert("Hubo un error al agregar el estudiante: " + (error.response.data.message || "Error desconocido"));
       } else {
         alert("Hubo un error al agregar el estudiante");

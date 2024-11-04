@@ -48,7 +48,7 @@
   text-decoration: none;
 }
 
-.back{
+.back {
   background-color: red;
 }
 
@@ -59,14 +59,13 @@
   margin-top: 10px;
 }
 
-.errorText{
+.errorText {
   text-align: start;
   color: red;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* Estilo base para los botones de paginación */
 #pagination button {
   background-color: white;
   color: black;
@@ -76,11 +75,10 @@
   margin: 0 1px;
 }
 
-/* Estilo cuando el botón está seleccionado o activo */
 #pagination button.active {
-  background-color: green; 
-  color: white; 
-  border: 1px solid green; 
+  background-color: green;
+  color: white;
+  border: 1px solid green;
 }
 #pagination button:hover:not(.active) {
   background-color: #e0e0e0;
@@ -89,4 +87,3 @@
   padding: 3px;
   margin-right: 3px;
 }
-

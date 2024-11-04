@@ -7,13 +7,11 @@ const StudentModule = () => {
   const [search, setSearch] = useState("");
 
   const onSubmit = (data) => {
-    setSearch(data.inputLastNameValue); // Establecemos el valor de búsqueda al useState de search, que será enviado a table
+    setSearch(data.inputLastNameValue); 
   };
 
   return (
     <div className="px-3">
-
-        {/* Buscador */}
       <nav className="navbar navbar-light">
         <form onSubmit={handleSubmit(onSubmit)} className="form-inline d-flex">
           <input
@@ -29,10 +27,7 @@ const StudentModule = () => {
         </form>
       </nav>
 
-        {/* Se renderiza la tabla con valores del Search (todos los datos o con datos del buscador) */}
-
       <Table search={search} />
-
     </div>
   );
 };
